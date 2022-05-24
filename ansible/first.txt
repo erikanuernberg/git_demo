@@ -1,0 +1,22 @@
+insert First play
+- hosts: all_workers
+gather_facts: False
+strategy:free
+serial: 1
+vars:
+  var_01: "Hi"
+  var_02: True
+  var_03: 42
+pre_tasks:
+  - name: Set authorized key taken from file
+    authorized_key:
+      user:
+      state:
+      key:
+    with_items:
+    - "{{ lookup...
+tasks:
+  - name:
+    debug:
+      msg:
+
