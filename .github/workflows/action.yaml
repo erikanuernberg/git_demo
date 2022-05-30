@@ -18,8 +18,10 @@ jobs:
       - name: List all changed files
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
+            echo "$file was changed" >> tabs.log
+            grep -P '\t' ${file} | sort -n >> tabs.log
           done
+
       - name: Upload report
         uses: actions/upload-artifact@v3
         with:
